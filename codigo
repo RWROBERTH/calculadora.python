@@ -1,0 +1,76 @@
+import tkinter as tk
+import random
+import math
+
+def FuncionSumatoria():
+    ecuacion=int(entrada1.get())+int(entrada2.get())+int(entrada3.get())
+    resultado["text"]=ecuacion
+    
+def FuncionMultiplicar():
+    ecuacion=int(entrada1.get())*int(entrada2.get())*int(entrada3.get())
+    multiplicar["text"]=ecuacion
+    
+def FuncionMayor():
+    if (int(entrada1.get()) >= int(entrada2.get()) and int(entrada1.get()) >= int(entrada3.get())):
+        mayor["text"]= int(entrada1.get())
+    else:
+        if (int(entrada2.get()) >= int(entrada1.get()) and int(entrada2.get()) >= int(entrada3.get())):
+            mayor["text"]= int(entrada2.get())
+        else:
+            if (int(entrada3.get()) >= int(entrada1.get()) and int(entrada3.get()) >= int(entrada2.get())):
+                mayor["text"]= int(entrada3.get())
+                
+def FuncionAleatorio():
+    numero=random.randint(1,2)
+    if numero==1:
+        aleatorio["text"]=int(entrada1.get())+int(entrada2.get())+int(entrada3.get())
+    else:
+        if numero ==2:
+            if (int(entrada1.get()) >= int(entrada2.get()) and int(entrada1.get()) >= int(entrada3.get())):
+                aleatorio["text"]= int(entrada1.get())
+            else:
+                if (int(entrada2.get()) >= int(entrada1.get()) and int(entrada2.get()) >= int(entrada3.get())):
+                    aleatorio["text"]= int(entrada2.get())
+                else:
+                    if (int(entrada3.get()) >= int(entrada1.get()) and int(entrada3.get()) >= int(entrada2.get())):
+                        aleatorio["text"]= int(entrada3.get())
+    return aleatorio
+
+def FuncionRaizCuadrada():
+    cuadrada["text"]= math.sqrt(aleatorio["text"])
+    return cuadrada
+    
+def FuncionCoseno():
+    coseno["text"]=str(math.cos(aleatorio))
+    return coseno
+                
+                
+ventana=tk.Tk()
+ventana.geometry("500x700")
+entrada1=tk.Entry(ventana)
+entrada1.grid(row=0,column=0)
+entrada2=tk.Entry(ventana)
+entrada2.grid(row=0,column=1)
+entrada3=tk.Entry(ventana)
+entrada3.grid(row=0,column=2)
+boton1=tk.Button(ventana,text="Sumatoria",width=12,height=2,command=FuncionSumatoria).grid(row=1,column=0)
+boton2=tk.Button(ventana,text="Multiplicar",width=12,height=2,command=FuncionMultiplicar).grid(row=1,column=1)
+boton3=tk.Button(ventana,text="Numero Mayor",width=12,height=2,command=FuncionMayor).grid(row=1,column=2)
+boton4=tk.Button(ventana,text="Aleatorio",width=12,height=2,command=FuncionAleatorio).grid(row=1,column=3)
+boton5=tk.Button(ventana,text="Raiz cuadrada",width=12,height=2,command=FuncionRaizCuadrada).grid(row=3,column=0)
+boton6=tk.Button(ventana,text="Coseno random",width=12,height=2,command=FuncionCoseno).grid(row=3,column=1)
+
+resultado=tk.Label(ventana)
+resultado.grid(row=2,column=0)
+multiplicar=tk.Label(ventana)
+multiplicar.grid(row=2,column=1)
+mayor=tk.Label(ventana)
+mayor.grid(row=2,column=2)
+aleatorio=tk.Label(ventana)
+aleatorio.grid(row=2,column=3)
+cuadrada=tk.Label(ventana)
+cuadrada.grid(row=4, column=0)
+coseno=tk.Label(ventana)
+coseno.grid(row=4, column=1)
+
+ventana.mainloop()
